@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+int main(){
+    const char *questions[] = {
+        "What I Do Today?",
+        "What I Eat Today?",
+        "What To Wear Today?",
+        "Where I Go Today?",
+        "What I Study Today?"
+    };
+
+    const char *choices[][5] = {
+        {"Go out","Study","Movie/series watch","Read a book","Do sports"},
+        {"Pizza","Hamburger","Ravioli","Pasta","Rice"},
+        {"T-shirt and Jeans","Dress","T-shirt and skirt","T-shirt and shorts","Overalls"},
+        {"Cafe","Seaside","Different city","To play","Gym"},
+        {"English","Coding","School Lessons","French","German"}
+    };
+
+    int choiceCounts[] = {5,5,5,5,5};
+    int chosenIndices[5];
+    char input[100];
+    int i, found = -1;
+
+    srand(time(NULL));
+
+    for(i = 0; i < 5; i++){
+        chosenIndices[i] = rand() % choiceCounts[i];
+    }
+
+     printf("What Questions:");
+    fgets(input,sizeof(input),stdin);
+    input[strlen(input) - 1] ='\0';
+
+    for(i = 0; i < 5; i++){
+        if(strcmp(input, questions[i]) == 0){
+            found = i;
+            break;
+        }
+    }
+
+    if(found != -1){
+        printf("computerChoice: %s\n", choices[found][chosenIndices[found]]);
+    } else {
+        printf("Sorry I can't answer that question\n");
+    }
+
+    return 0;
+}
