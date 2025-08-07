@@ -23,7 +23,7 @@ int main(){
     int choiceCounts[] = {5,5,5,5,5};
     int chosenIndices[5];
     char input[100];
-    int i, found = -1;
+    int i, f = -1;
 
     srand(time(NULL));
 
@@ -31,7 +31,7 @@ int main(){
         chosenIndices[i] = rand() % choiceCounts[i];
     }
 
-     printf("What Questions:");
+    printf("What Questions:");
     fgets(input,sizeof(input),stdin);
     input[strlen(input) - 1] ='\0';
 
@@ -42,8 +42,8 @@ int main(){
         }
     }
 
-    if(found != -1){
-        printf("computerChoice: %s\n", choices[found][chosenIndices[found]]);
+    if(f != -1){
+        printf("computerChoice: %s\n", choices[f][chosenIndices[f]]);
     } else {
         printf("Sorry I can't answer that question\n");
     }
